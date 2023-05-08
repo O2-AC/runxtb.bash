@@ -368,16 +368,13 @@ load_xtb_modules ()
   sed -i 's,\x1B\[[0-9;]*[a-zA-Z],,g' "$tmpfile"
   # Check whether then modules were loaded ok
   local check_module
-  for check_module in "${load_modules[@]}" ; do
-    # Cut after a slash is encountered (probably works universally), there is a check for the command anyway
-    if grep -q -E "${check_module%%/*}.*[Oo][Kk]" "$tmpfile" ; then
-      debug "Module '${check_module}' loaded successfully."
-    else
-      debug "Issues loading module '${check_module}'."
-      debug "$(cat "$tmpfile")"
-      return 1
-    fi
-  done
+  if grep -q -E "[Ee][Rr][Rr][Oo][Rr]" "$tmpfile" ; then
+    debug "Modules loaded successfully."
+  else
+    debug "Issues loading modules."
+    debug "$(cat "$tmpfile")"
+    return 1
+  fi
 }
 
 # 
