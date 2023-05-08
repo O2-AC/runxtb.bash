@@ -362,7 +362,8 @@ load_xtb_modules ()
   ( command -v module &>> "$tmpfile" ) || fatal "Command 'module' not available."
   # Try to load the modules, but trap the output in the temporary file.
   # Exit if that fails (On RWTH cluster the exit status of modules is always 0).
-  #module load "${load_modules[*]}" &>> "$tmpfile" || fatal "Failed to load modules."
+  # The new Lmod module system throws errors when loading all modules sequentially in one
+  # command, thus they are now loaded sequentially.
   for mod in "${load_modules[@]}" ; do
     module load "${mod}" || fatal "Failed to load module."
   done
