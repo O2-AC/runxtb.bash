@@ -369,11 +369,11 @@ load_xtb_modules ()
   # Check whether then modules were loaded ok
   local check_module
   if grep -q -E "[Ee][Rr][Rr][Oo][Rr]" "$tmpfile" ; then
-    debug "Modules loaded successfully."
-  else
     debug "Issues loading modules."
     debug "$(cat "$tmpfile")"
     return 1
+  else
+    debug "Modules loaded successfully."
   fi
 }
 
