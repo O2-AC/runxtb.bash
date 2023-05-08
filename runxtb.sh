@@ -365,7 +365,7 @@ load_xtb_modules ()
   # The new Lmod module system throws errors when loading all modules sequentially in one
   # command, thus they are now loaded sequentially.
   for mod in "${load_modules[@]}" ; do
-    module load "${mod}" || fatal "Failed to load module."
+    module load "${mod}" &>> "$tmpfile" || fatal "Failed to load module."
   done
   # Remove colourcodes with sed:
   # https://www.commandlinefu.com/commands/view/12043/remove-color-special-escape-ansi-codes-from-text-with-sed
