@@ -363,7 +363,9 @@ load_xtb_modules ()
   # Try to load the modules, but trap the output in the temporary file.
   # Exit if that fails (On RWTH cluster the exit status of modules is always 0).
   #module load "${load_modules[*]}" &>> "$tmpfile" || fatal "Failed to load modules."
-  module load "${load_modules[*]}" || fatal "Failed to load modules."
+  for mod in "${load_modules[@]}" ; do
+    module load "${mod}" || fatal "Failed to load module."
+  done
   # Remove colourcodes with sed:
   # https://www.commandlinefu.com/commands/view/12043/remove-color-special-escape-ansi-codes-from-text-with-sed
   sed -i 's,\x1B\[[0-9;]*[a-zA-Z],,g' "$tmpfile"
