@@ -635,8 +635,8 @@ write_submit_script ()
 
       for mod in "${load_modules[@]}" ; do
         cat >&9 <<-EOF
-      module load "${mod}"
-			EOF
+				module load "${mod}"
+				EOF
       done
 
 			# Redirect because otherwise it would go to the error output, which might be bad
