@@ -635,7 +635,7 @@ write_submit_script ()
 
       for mod in "${load_modules[@]}" ; do
         cat >&9 <<-EOF
-        module load "${mod}"
+      module load "${mod}"
 			EOF
       done
 
