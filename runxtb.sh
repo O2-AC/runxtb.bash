@@ -631,7 +631,9 @@ write_submit_script ()
 			# Loading the modules should take care of everything except threads
 			# Export current (at the time of execution) MODULEPATH (to be safe, could be set in bashrc)
 			export MODULEPATH="$MODULEPATH"
-			module load ${load_modules[*]} 2>&1 || exit 1
+      for mod in "${load_modules[@]}" ; do
+        module load "${mod}" || fatal "Failed to load module."
+      done
 			# Redirect because otherwise it would go to the error output, which might be bad
 			# Exit on error, which it might not do given a specific implementation
 			 
