@@ -634,7 +634,7 @@ write_submit_script ()
 			EOF
 
       for mod in "${load_modules[@]}" ; do
-        cat <&9 <<-EOF
+        cat >&9 <<-EOF
         module load "${mod}"
 			  EOF
       done
