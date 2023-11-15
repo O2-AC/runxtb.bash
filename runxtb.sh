@@ -106,7 +106,7 @@ display_howto ()
   if [[ "$use_modules" =~ ^[Tt][Rr]?[Uu]?[Ee]? ]] ; then
     debug "Using modules."
     # Loading the modules should take care of everything except threads
-    load_xtb_modules || fatal "Failed loading modules."
+    load_xtb_modules #|| fatal "Failed loading modules."
   else
     load_path_settings
   fi
@@ -938,7 +938,7 @@ message "This is only a wrapper to set paths and variables."
 if [[ "$use_modules" =~ ^[Tt]([Rr]([Uu]([Ee])?)?)?$ ]] ; then
   debug "Using modules."
   # Loading the modules should take care of everything except threats
-  load_xtb_modules || fatal "Failed loading modules."
+  load_xtb_modules #|| fatal "Failed loading modules."
 else
   load_path_settings || fatal "Failed initialising with path settings."
 fi
